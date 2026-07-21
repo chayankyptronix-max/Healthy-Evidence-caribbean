@@ -1,1 +1,96 @@
 @import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   HEC Healthcare — Global Typography & Design Tokens
+   Brand palette:
+     Primary Navy   #002B5C  — headlines, HEC letters
+     Evidence Blue  #004B8D  — charts, digital sections
+     HEC Green      #149A37  — highlights, key data
+     Bright Green   #2DBE4F  — small social highlights only
+     Background     #F8FAF8  — base background
+     Text Navy      #0B1F3A  — body copy and captions
+   Typography:
+     Headlines  — Manrope 700/800 (ExtraBold)
+     Body       — Manrope 400/500
+     Editorial  — Lora (pull quotes, reflective intros)
+═══════════════════════════════════════════════ */
+
+/* ── Base reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Global font & colour defaults ── */
+html {
+  font-family: 'Manrope', 'Avenir', Arial, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8FAF8;
+  color: #0B1F3A;          /* Text Navy — all body copy */
+  font-family: 'Manrope', 'Avenir', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ── Headline defaults (h1–h4) ── */
+h1, h2, h3, h4 {
+  font-family: 'Manrope', 'Avenir', Arial, sans-serif;
+  font-weight: 800;        /* ExtraBold — matches brand spec */
+  color: #002B5C;          /* Primary Navy */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ── Lighter display headings (h5–h6) ── */
+h5, h6 {
+  font-family: 'Manrope', 'Avenir', Arial, sans-serif;
+  font-weight: 700;
+  color: #002B5C;
+}
+
+/* ── Body / paragraph defaults ── */
+p {
+  font-family: 'Manrope', 'Avenir', Arial, sans-serif;
+  color: #0B1F3A;          /* Text Navy */
+  line-height: 1.75;
+}
+
+/* ── Editorial accent class (Lora) ── */
+/* Usage: <p className="editorial"> or <blockquote className="editorial"> */
+.editorial,
+.pull-quote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: #0B1F3A;
+  line-height: 1.8;
+}
+
+blockquote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  border-left: 3px solid #149A37;
+  padding-left: 1.25rem;
+  color: #0B1F3A;
+}
+
+/* ── Anchor reset ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Utility: hide Swiper default arrows (we use custom ones) ── */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+/* ── Swiper pagination dots colour override ── */
+.swiper-pagination-bullet-active {
+  background: #149A37 !important;
+}
