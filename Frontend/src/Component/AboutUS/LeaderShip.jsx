@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-import person1 from "../../assets/person1.jpg";
-import person2 from "../../assets/person2.jpg";
-import person3 from "../../assets/person3.jpg";
-import person4 from "../../assets/person4.jpg";
-import person5 from "../../assets/person5.jpg";
-import person6 from "../../assets/person6.jpg";
-import person7 from "../../assets/person7.jpg";
-import person8 from "../../assets/person8.jpg";
-import person9 from "../../assets/person9.jpg";
+import person1 from "../../assets/person1.webp";
+import person2 from "../../assets/person2.webp";
+import person3 from "../../assets/person3.webp";
+import person4 from "../../assets/person4.webp";
+import person5 from "../../assets/person5.webp";
+import person6 from "../../assets/person6.webp";
+import person7 from "../../assets/person7.webp";
+import person8 from "../../assets/person8.webp";
+import person9 from "../../assets/person9.webp";
 
 const leaders = [
     {

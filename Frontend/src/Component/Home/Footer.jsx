@@ -81,11 +81,6 @@ const Footer = () => {
               className="h-16 w-auto object-contain brightness-0 invert mb-6"
             />
 
-            <p className="text-gray-300 leading-7 text-sm max-w-xs">
-              Advancing evidence-based healthcare across the Caribbean through
-              research, collaboration, and innovation.
-            </p>
-
             {/* Contact Info */}
             <div className="mt-8 space-y-3">
               <div className="flex items-center gap-3 text-gray-300 text-sm">
@@ -126,7 +121,7 @@ const Footer = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: colIndex * 0.1 }}
               >
-                <h4 className="uppercase tracking-[3px] text-[#2DBE4F] font-semibold text-xs mb-6">
+                <h4 className="uppercase tracking-[3px] !text-[#2DBE4F] font-semibold text-xs mb-6">
                   {col.heading}
                 </h4>
 
@@ -153,8 +148,11 @@ const Footer = () => {
       <div className="border-t border-white/10" />
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400 text-sm">
-        <p>© {new Date().getFullYear()} Health-Y Evidence Caribbean. All rights reserved.</p>
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-white text-sm">
+        <div className="flex flex-col items-center md:items-start gap-1">
+          <p className="!text-gray-400">© {new Date().getFullYear()} Health-Y Evidence Caribbean. All rights reserved.</p>
+          <p className="!text-gray-400">Designed and developed by <a href="https://kyptronix.us" target="_blank" rel="noopener noreferrer" className="text-[#2DBE4F] hover:text-[#149A37] transition-colors font-medium">Kyptronix LLP</a></p>
+        </div>
         <div className="flex items-center gap-6">
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-white transition-colors">Terms of Use</a>

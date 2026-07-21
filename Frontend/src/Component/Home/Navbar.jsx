@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, Search, X, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/HomeLogo.png";
 
 const navItems = [
@@ -39,7 +39,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleDropdownClick = (link) => {
-    if (link === "About us") navigate("/about");
+    const lowerLink = link.toLowerCase();
+    if (lowerLink.includes("about")) navigate("/about");
+    else if (lowerLink.includes("values")) navigate("/our-values");
+    else if (lowerLink.includes("environmental") || lowerLink.includes("esg")) navigate("/esg");
   };
 
   // Auto-focus input when search opens
@@ -133,14 +136,17 @@ const Navbar = () => {
                     {item.dropdown && (
                       <div className="absolute left-0 top-full mt-3 w-64 rounded-2xl bg-white shadow-2xl border border-gray-100 py-3 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
                         {item.dropdown.map((link) => (
-                          <a
+                          <Link
                             key={link}
-                            href={link === "About us" ? "/about" : "#"}
-                            onClick={(e) => { if (link === "About us") { e.preventDefault(); handleDropdownClick(link); } }}
+                            to={
+                              link.toLowerCase().includes("about") ? "/about" : 
+                              link.toLowerCase().includes("values") ? "/our-values" :
+                              (link.toLowerCase().includes("environmental") || link.toLowerCase().includes("esg")) ? "/esg" : "#"
+                            }
                             className="block px-6 py-2.5 text-sm text-[#0B1F3A] hover:bg-[#F8FAF8] hover:text-[#149A37] transition-all cursor-pointer"
                           >
                             {link}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     )}
@@ -270,14 +276,18 @@ const Navbar = () => {
                           className="overflow-hidden pl-4"
                         >
                           {item.dropdown.map((link) => (
-                            <a
+                            <Link
                               key={link}
-                              href={link === "About us" ? "/about" : "#"}
-                              onClick={(e) => { if (link === "About us") { e.preventDefault(); setMobileOpen(false); navigate("/about"); } }}
+                              to={
+                                link.toLowerCase().includes("about") ? "/about" : 
+                                link.toLowerCase().includes("values") ? "/our-values" : 
+                                (link.toLowerCase().includes("environmental") || link.toLowerCase().includes("esg")) ? "/esg" : "#"
+                              }
+                              onClick={() => setMobileOpen(false)}
                               className="block px-4 py-2.5 text-sm text-gray-500 hover:text-[#149A37] transition-colors cursor-pointer"
                             >
                               {link}
-                            </a>
+                            </Link>
                           ))}
                         </motion.div>
                       )}

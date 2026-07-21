@@ -9,11 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import hero1 from "../../assets/hero1.png";
-import hero2 from "../../assets/hero2.jpg";
-import hero3 from "../../assets/hero3.jpg";
-import hero4 from "../../assets/hero4.jpg";
-import hero5 from "../../assets/hero5.jpg";
+import hero1 from "../../assets/hero1.webp";
+import hero2 from "../../assets/hero2.webp";
+import hero3 from "../../assets/hero3.webp";
+import hero4 from "../../assets/hero4.webp";
+import hero5 from "../../assets/hero5.webp";
 
 /* ── Slides data ── */
 const slides = [
@@ -22,7 +22,7 @@ const slides = [
     tag:   "Evidence-Based Research",
     title: "Advancing",
     highlight: "Health Evidence",
-    subtitle: "for a Stronger Caribbean",
+    subtitle: "for Stronger Caribbean",
     description:
       "Empowering healthcare professionals, researchers, policymakers, and communities through trusted evidence.",
   },
@@ -81,7 +81,7 @@ const Hero = () => {
   const pad   = (n) => String(n + 1).padStart(2, "0");
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[calc(100vh-5rem)] md:h-[calc(100vh-6rem)] overflow-hidden">
 
       {/* ══ Swiper — slide effect (no fade) ══ */}
       <Swiper
@@ -108,7 +108,7 @@ const Hero = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-screen">
+            <div className="relative h-[calc(100vh-5rem)] md:h-[calc(100vh-6rem)]">
 
               {/* Background image with zoom-in animation */}
               <motion.img
@@ -133,7 +133,7 @@ const Hero = () => {
               {/* ── Slide text content ── */}
               <div className="relative z-10 flex h-full items-center">
                 <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full">
-                  <div className="max-w-3xl">
+                  <div className="max-w-5xl">
 
                     <AnimatePresence mode="wait">
                       <motion.div
@@ -157,7 +157,7 @@ const Hero = () => {
                         {/* Heading */}
                         <motion.h1
                           variants={textVariants}
-                          className="!text-white text-5xl lg:text-7xl font-light leading-tight"
+                          className="!text-white text-4xl md:text-5xl lg:text-7xl font-light leading-tight"
                           style={{ fontFamily: "'Manrope', sans-serif", letterSpacing: "-0.02em" }}
                         >
                           {slide.title}
@@ -172,7 +172,7 @@ const Hero = () => {
                         {/* Description */}
                         <motion.p
                           variants={textVariants}
-                          className="mt-7 text-lg text-gray-300 leading-8 max-w-xl"
+                          className="mt-5 md:mt-7 text-base md:text-lg text-gray-300 leading-relaxed max-w-xl"
                           style={{ fontFamily: "'Manrope', sans-serif" }}
                         >
                           {slide.description}
@@ -181,7 +181,7 @@ const Hero = () => {
                         {/* CTA buttons */}
                         <motion.div
                           variants={textVariants}
-                          className="mt-10 flex flex-wrap gap-4"
+                          className="mt-8 md:mt-10 flex flex-wrap gap-3 md:gap-4"
                         >
                           <a
                             href={videoLink}
@@ -216,8 +216,8 @@ const Hero = () => {
       {/* ══ Custom navigation arrows ══ */}
       <button
         id="hero-prev"
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20
-                   w-12 h-12 flex items-center justify-center
+        className="hidden md:flex absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20
+                   w-10 h-10 md:w-12 md:h-12 items-center justify-center
                    rounded-full bg-white/10 hover:bg-[#149A37]
                    border border-white/20 hover:border-[#149A37]
                    text-white backdrop-blur-sm
@@ -229,8 +229,8 @@ const Hero = () => {
 
       <button
         id="hero-next"
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20
-                   w-12 h-12 flex items-center justify-center
+        className="hidden md:flex absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-20
+                   w-10 h-10 md:w-12 md:h-12 items-center justify-center
                    rounded-full bg-white/10 hover:bg-[#149A37]
                    border border-white/20 hover:border-[#149A37]
                    text-white backdrop-blur-sm
@@ -240,47 +240,7 @@ const Hero = () => {
         <ChevronRight size={20} />
       </button>
 
-      {/* ══ Slide counter + progress bar ══ */}
-      <div className="absolute bottom-16 left-6 lg:left-14 z-20 flex items-end gap-6">
 
-        {/* Counter */}
-        <div className="flex items-baseline gap-1">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="text-white text-2xl font-bold"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              {pad(activeIndex)}
-            </motion.span>
-          </AnimatePresence>
-          <span className="text-white/40 text-sm font-medium">/ {pad(total - 1)}</span>
-        </div>
-
-        {/* Slide dots */}
-        <div className="flex gap-2 mb-1">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                swiperRef.current?.swiper?.slideToLoop(i);
-                setActiveIndex(i);
-                setAnimKey((k) => k + 1);
-              }}
-              className={`rounded-full transition-all duration-400
-                ${i === activeIndex
-                  ? "w-8 h-2 bg-[#149A37]"
-                  : "w-2 h-2 bg-white/30 hover:bg-white/60"
-                }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* ══ Scroll-down indicator ══ */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
